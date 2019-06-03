@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 12:24:52 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/05/30 20:32:54 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 19:46:03 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void mlx_set_prop(t_frac *frac)
 {
-    frac->prop.max_iteration = 200;
+    frac->prop.max_iteration = 42;
     frac->prop.x_shift = 0;
     frac->prop.y_shift = 0;
-    frac->prop.zoom = 0;
     frac->mouse.mouse_x = 0;
     frac->mouse.mouse_y = 0;
+    frac->prop.zoom = 1;
+    if (ft_strcmp(frac->prop.fractal, "mandelbrot"))
+        frac->prop.zoom = 0.5;
 }
 
 void mlx_set_img(t_frac *frac)
@@ -41,10 +43,5 @@ void mlx_clear_img(t_frac *frac)
 void mlx_pixel_to_img(int x, int y, int color, t_frac *frac)
 {
     if (x < WIDTH && y < HEIGHT)
-    // color = mlx_get_color_value(frac->mlx, color);
-    // ft_memcpy(data->img_ptr + 4 * WIDTH * y + x * 4, &color, sizeof(int));
-        *(int *)&(frac->image.data)[(x * frac->image.bpp >> 3) + \
-        (y * frac->image.sizeline)] = color;
-    // if (x < WIDTH && y < HEIGHT)
-    //     ft_memcpy(frac->image.data + 4 * WIDTH * y + x * 4, &color, sizeof(int));
+        ft_memcpy(frac->image.data + 4 * WIDTH * y + x * 4, &color, sizeof(int));
 }

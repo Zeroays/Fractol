@@ -6,16 +6,11 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 11:05:23 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/05/30 20:28:08 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 19:33:41 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-void mandelbrot_setup(t_frac *frac)
-{
-    frac->c.zoom = 0;
-}
 
 void *mandelbrot_driver(void *data)
 {
@@ -25,7 +20,7 @@ void *mandelbrot_driver(void *data)
     frac = (t_frac *)data;
     tmp = frac->pfrac.pfrac_y;
     frac->pfrac.pfrac_x = 0;
-    while (++frac->pfrac.pfrac_x < WIDTH)
+    while (++frac->pfrac.pfrac_x <= WIDTH)
     {
         frac->pfrac.pfrac_y = tmp;
         while (++frac->pfrac.pfrac_y <= frac->pfrac.pfrac_ymax)
@@ -34,8 +29,8 @@ void *mandelbrot_driver(void *data)
             frac->c.y = 0;
             frac->c.x0 = frac->pfrac.pfrac_x;
             frac->c.y0 = frac->pfrac.pfrac_y;
-            frac->c.x_map = mapping(frac->pfrac.pfrac_x, WIDTH, -2.5, 1);
-            frac->c.y_map = mapping(frac->pfrac.pfrac_y, HEIGHT, -1, 1);
+            frac->c.x_map = mapping(frac->pfrac.pfrac_x, WIDTH, -2.5, 1) / frac->prop.zoom;
+            frac->c.y_map = mapping(frac->pfrac.pfrac_y, HEIGHT, -1, 1) / frac->prop.zoom;
             mandelbrot_check(frac);
         }
     }
@@ -66,35 +61,15 @@ void mandelbrot_plot(double iteration, t_frac *frac)
     double log_zn;
     double nu;
 
-    // log_zn = 0;
-    // nu = 0;
     if (iteration < frac->prop.max_iteration)
     {
-        log_zn = log(SQR(frac->c.x) + SQR(frac->c.y)) / 2.0f;
+        log_zn = log(SQR(frac->c.x) + SQR(frac->c.y)) / 2;
         nu = log(log_zn / log(2)) / log(2);
         iteration = iteration + 1 - nu;
         color = PALETTE[(int)iteration % 16];
-        // int color1 = PALETTE[((int)iteration) % 15];
-        // int color2 = PALETTE[((int)iteration + 1) % 15];
-        // color = linear_interpolation(color1, color2, (double)(iteration - (long)iteration));
     }
-    // if (iteration >= 100)
-    //     printf("%f", iteration);
-    // unsigned int colors[200];
-    // for (int i = 0; i < 200; i++) {
-    //     colors[i] = (0x000B0023 + (0x00FEAC07 - 0x000B0023) * ((double)i / 200.0));
-        // printf("%x\n", colors[i]);
-    //}
-    // color = colors[(int)iteration];
-    // unsigned int color1 = colors[(int)iteration];
-    // unsigned int color2 = colors[((int)iteration + 1)];
-    // color = linear_interpolation(color1, color2, (double)(iteration - ((long)iteration)));
-    //color = linear_interpolation(0x00000000, 0x000B0023, (double)(iteration - ((long)iteration)));
-    //printf("%f", (double)(iteration - ((long)iteration)));
     else
         color = 0x00000000;
-    //color = linear_interpolation(color1, color2, (double)(iteration - ((long)iteration)));
-    // color = colors[(int)iteration % 5];
     mlx_pixel_to_img(frac->pfrac.pfrac_x, frac->pfrac.pfrac_y, color, frac);
 }
 
@@ -107,7 +82,6 @@ void mandelbrot_thread(t_frac *frac)
     i = 0;
     while (i < THREADS)
     {
-        //((double)(1.00 / THREADS) * WIDTH) * i
         ft_memcpy((void *)&tab[i], (void *)frac, sizeof(t_frac));
         tab[i].pfrac.pfrac_y = ((double)(1.00 / THREADS) * WIDTH) * i;
         tab[i].pfrac.pfrac_ymax = ((double)(1.00 / THREADS) * WIDTH) * (i + 1);

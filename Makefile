@@ -6,7 +6,7 @@
 #    By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/18 13:50:02 by vrabaib           #+#    #+#              #
-#    Updated: 2019/05/28 18:34:45 by vrabaib          ###   ########.fr        #
+#    Updated: 2019/06/02 19:28:18 by vrabaib          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,12 +38,12 @@ all: $(NAME)
 
 clean:
 	@echo "Removing object files"
-	@/bin/rm -rf $(SRCO) 
+	@/bin/rm -rf $(SRCO) $(FRACTALSO) 
 	@make -C libft clean
 
 fclean: clean
 	@echo "Removing dependencies with make"
-	@/bin/rm -rf $(NAME) 
+	@/bin/rm -rf $(NAME)
 	@make -C libft fclean
 
 re: fclean all

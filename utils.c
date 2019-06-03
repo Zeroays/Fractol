@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:41:48 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/05/30 19:13:40 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/01 18:21:15 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void dispatch(t_frac *frac)
     if (!(ft_strcmp(frac->prop.fractal, "mandelbrot")))
         mandelbrot_thread(frac);
     else if (!(ft_strcmp(frac->prop.fractal, "julia")))
-        julia_driver(frac);
+        julia_thread(frac);
     else if (!(ft_strcmp(frac->prop.fractal, "tricorn")))
-        tricorn_driver(frac);
-    //mlx_put_image_to_window(frac->display.init, frac->display.win, frac->image.img, 0, 0);
+        tricorn_thread(frac);
 }

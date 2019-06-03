@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 15:08:44 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/05/30 19:44:03 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 19:37:49 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@
 # define IMG_FAILURE 5
 
 # define THREADS 16
-// # define THREAD_WIDTH (WIDTH / THREADS)
 
-# define MAPPING(X0, Y0, X1, Y1) ((X0 / Y0) * (Y1 - X1) + X1)
 # define SQR(X0) (X0 * X0)
 
 typedef struct s_mlx
@@ -98,21 +96,20 @@ typedef struct s_frac
     t_pfrac pfrac;
 }              t_frac;
 
-void mandelbrot_setup(t_frac *frac);
 void *mandelbrot_driver(void *data);
 void mandelbrot_check(t_frac *frac);
 void mandelbrot_plot(double iteration, t_frac *frac);
 void mandelbrot_thread(t_frac *frac);
 
-void julia_setup(int x0, int y0, t_frac *frac);
-void julia_driver(t_frac *frac);
+void *julia_driver(void *data);
 void julia_check(t_frac *frac);
 void julia_plot(double iteration, t_frac *frac);
+void julia_thread(t_frac *frac);
 
-void tricorn_setup(int x0, int y0, t_frac *frac);
-void tricorn_driver(t_frac *frac);
+void *tricorn_driver(void *data);
 void tricorn_check(t_frac *frac);
 void tricorn_plot(double iteration, t_frac *frac);
+void tricorn_thread(t_frac *frac);
 
 void mlx_set_img(t_frac *frac);
 void mlx_clear_img(t_frac *frac);
@@ -132,8 +129,7 @@ void mlx_set_prop(t_frac *frac);
 int mouse_press(int mousecode, int x, int y, t_frac *frac);
 int mouse_move(int x, int y, t_frac *frac);
 void fractol_twirl(int x, int y, t_frac *frac);
-void fractol_switch(t_frac *frac);
-void zoom_io(int direction, t_frac *frac);
+void zoom_io(int x, int y, int direction, t_frac *frac);
 
 double mapping(double n, int dimension, double min, double max);
 int linear_interpolation(int c1, int c2, double num);

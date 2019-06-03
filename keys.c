@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:47 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/05/28 21:35:57 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 19:35:02 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int key_press(int keycode, t_frac *frac)
         translate(frac, 'u');
     else if (keycode == DOWN)
         translate(frac, 'd');
-    else if (keycode == FRACTOL)
-        fractol_switch(frac);
     else if (keycode == ITERATION_UP)
         fractol_iteration(ITERATION_UP, frac);
     else if (keycode == ITERATION_DOWN)
@@ -39,8 +37,6 @@ int key_press(int keycode, t_frac *frac)
 
 int terminate(t_frac *frac)
 {
-    //mlx_clear_img(frac);
-    //mlx_destroy_image((void *)frac->display.init, (void *)frac->image.img);
     free(frac);
     exit(0);
     return (0);
