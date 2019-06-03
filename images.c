@@ -6,11 +6,25 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 12:24:52 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/06/02 19:46:03 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 21:01:01 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fractol.h"
+
+void fractal_instructions(t_frac *frac)
+{
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 80, WHITE, "MOVE : ARROW KEYS");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 20, WHITE, "SCROLL +/- : MOUSE WHEEL");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 11, WHITE, "ITERATION + : E");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 7.5, WHITE, "ITERATION - : X");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 5.75, WHITE, "COLOR : C");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 4.65, WHITE, "RESET : R");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 3.95, WHITE, "CLOSE : ESC");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 4.65, WHITE, "RESET : R");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 3.95, WHITE, "CLOSE : ESC");
+    mlx_string_put(frac->image.img, frac->display.win, WIDTH / 60, HEIGHT / 1.05, WHITE, ft_strjoin("MAX ITERATIONS : ", ft_itoa(frac->prop.max_iteration)));
+}
 
 void mlx_set_prop(t_frac *frac)
 {

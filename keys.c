@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:47 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/06/02 19:35:02 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 20:48:08 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void color(t_frac *frac)
             (y0 * frac->image.sizeline)] += 0x000000AA;
     }
     mlx_put_image_to_window(frac->display.init, frac->display.win, frac->image.img, 0, 0);
-    
+    fractal_instructions(frac);
 }
 
 void translate(t_frac *frac, int direction)

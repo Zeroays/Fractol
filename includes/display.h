@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 11:57:24 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/06/02 19:32:33 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 20:24:25 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # define WIDTH 920
 # define HEIGHT 640
+
+#define WHITE 0x00FFFFFF
 
 #define PACO 0x00431E0F
 #define HAITI 0x0019071A
@@ -35,8 +37,23 @@
 #define BROWN 0x00995700
 #define NUTMEG_WOOD_FINISH 0x006A3403
 
-#define PALETTE (int[16]) {PACO, HAITI, DEEP_COVE, BLACK_ROCK, \
-NAVY_BLUE, TOREA_BAY, TORY_BLUE, MARINER, CORNFLOWER, HUMMING_BIRD, \
-MINT_JULEP, CREAM_CAN, WEB_ORANGE, PIRATE_GOLD, BROWN, NUTMEG_WOOD_FINISH}
+#define A PACO
+#define B HAITI
+#define C DEEP_COVE
+#define D BLACK_ROCK
+#define E NAVY_BLUE
+#define F TOREA_BAY
+#define G TORY_BLUE
+#define H MARINER
+#define I CORNFLOWER 
+#define J HUMMING_BIRD
+#define K MINT_JULEP
+#define L CREAM_CAN
+#define M WEB_ORANGE
+#define N PIRATE_GOLD
+#define O BROWN
+#define P NUTMEG_WOOD_FINISH
+
+#define PALETTE (unsigned int[16]) {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P}
 
 #endif

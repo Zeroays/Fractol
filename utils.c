@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:41:48 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/06/01 18:21:15 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 20:39:31 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void dispatch(t_frac *frac)
         julia_thread(frac);
     else if (!(ft_strcmp(frac->prop.fractal, "tricorn")))
         tricorn_thread(frac);
+    fractal_instructions(frac);
 }

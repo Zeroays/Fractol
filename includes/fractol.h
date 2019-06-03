@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 15:08:44 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/06/02 19:37:49 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 20:25:39 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void fractol_iteration(int iteration, t_frac *frac);
 
 void mlx_set_window(t_frac *frac);
 void mlx_set_prop(t_frac *frac);
+void fractal_instructions(t_frac *frac);
 
 int mouse_press(int mousecode, int x, int y, t_frac *frac);
 int mouse_move(int x, int y, t_frac *frac);

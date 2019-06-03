@@ -6,7 +6,7 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 11:59:24 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/06/02 19:29:25 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/02 20:27:27 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
         mlx_set_prop(frac);
         dispatch(frac);
         mlx_put_image_to_window(frac->display.init, frac->display.win, frac->image.img, 0, 0);
+        fractal_instructions(frac);
         mlx_hook(frac->display.win, KEY_PRESS, 3, key_press, frac);
         mlx_hook(frac->display.win, MOUSE_PRESS, 3, mouse_press, frac);
         mlx_hook(frac->display.win, MOUSE_MOVE, 3, mouse_move, frac);
