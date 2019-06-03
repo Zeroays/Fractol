@@ -6,31 +6,31 @@
 /*   By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:41:48 by vrabaib           #+#    #+#             */
-/*   Updated: 2019/06/02 20:39:31 by vrabaib          ###   ########.fr       */
+/*   Updated: 2019/06/03 16:02:32 by vrabaib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fractol.h"
 
-double mapping(double n, int dimension, double min, double max)
+double	mapping(double n, int dimension, double min, double max)
 {
-    return ((n / dimension) * (max - min) + min);
+	return ((n / dimension) * (max - min) + min);
 }
 
-int linear_interpolation(int c1, int c2, double num)
+int		linear_interpolation(int c1, int c2, double num)
 {
-    return ((c2 - c1) * num + c1);
+	return ((c2 - c1) * num + c1);
 }
 
-int valid_input(char *argv)
+int		valid_input(char *argv)
 {
-    if (!(ft_strcmp(argv, "mandelbrot")))
-        return (1);
-    else if (!(ft_strcmp(argv, "julia")))
-        return (1);
-    else if (!(ft_strcmp(argv, "tricorn")))
-        return (1);
-    return (0);
+	if (!(ft_strcmp(argv, "mandelbrot")))
+		return (1);
+	else if (!(ft_strcmp(argv, "julia")))
+		return (1);
+	else if (!(ft_strcmp(argv, "tricorn")))
+		return (1);
+	return (0);
 }
 
 int		fdf_exit(int code)
@@ -46,13 +46,15 @@ int		fdf_exit(int code)
 	exit(code);
 }
 
-void dispatch(t_frac *frac)
+void	dispatch(t_frac *frac)
 {
-    if (!(ft_strcmp(frac->prop.fractal, "mandelbrot")))
-        mandelbrot_thread(frac);
-    else if (!(ft_strcmp(frac->prop.fractal, "julia")))
-        julia_thread(frac);
-    else if (!(ft_strcmp(frac->prop.fractal, "tricorn")))
-        tricorn_thread(frac);
-    fractal_instructions(frac);
+	if (!(ft_strcmp(frac->prop.fractal, "mandelbrot")))
+		mandelbrot_thread(frac);
+	else if (!(ft_strcmp(frac->prop.fractal, "julia")))
+		julia_thread(frac);
+	else if (!(ft_strcmp(frac->prop.fractal, "tricorn")))
+		tricorn_thread(frac);
+	mlx_put_image_to_window(frac->display.init, frac->display.win, \
+	frac->image.img, 0, 0);
+	fractal_instructions(frac);
 }
